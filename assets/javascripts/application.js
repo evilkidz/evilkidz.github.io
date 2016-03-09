@@ -1,53 +1,72 @@
-  var clientId = '853fdb79a14a9ed748ec9fe482e859dd';
-      var trackId = '164457859';
+// Sticky Header
+$(window).scroll(function() {
 
-      // DOM elements
-      var artwork = $("#artwork");
-      var band = $('#band');
-      var song = $('#track');
+    if ($(window).scrollTop() > 100) {
+        $('.main_header').addClass('sticky');
+    } else {
+        $('.main_header').removeClass('sticky');
+    }
+});
 
+// Mobile Navigation
+$('.mobile-toggle').click(function() {
+    if ($('.main_header').hasClass('open-nav')) {
+        $('.main_header').removeClass('open-nav');
+    } else {
+        $('.main_header').addClass('open-nav');
+    }
+});
 
-      // Init SoundCloud JS SDK (dont forget to include the .js SDK)
-      SC.initialize({
-      client_id: clientId
-      });
+$('.main_header li a').click(function() {
+    if ($('.main_header').hasClass('open-nav')) {
+        $('.navigation').removeClass('open-nav');
+        $('.main_header').removeClass('open-nav');
+    }
+});
 
-      // Getting SC track infos
-      SC.get('/tracks/'+trackId, function(track){
-      
-      // Injecting infos
-      artwork.attr('src', track.artwork_url.replace('-large', '-crop')); // Cover (replacing the default image size "large" with "crop")
-      band.html(track.user.username); // Band Name
-      song.html(track.title); // Song name
-      
-      // Play btn
-      var status = false; // play status
-      
-      $('#play').click(function(e){
-      e.preventDefault();
-        
-      if(status == false){
-          
-      $('#player').addClass('open'); // Opening the player
-      $('#record').addClass('spinning'); // vinyl now spinning
-      $(this).removeClass('ion-ios7-play').addClass('ion-ios7-pause'); // change play btn to pause btn
-      
-      audioPlayer = new Audio(track.uri + '/stream?client_id=' + clientId); // Create audio object with stream url...
-      audioPlayer.play(); // ...and play
-      
-      status = !status; // invert player status  
-      } 
-      else {
-          
-      $('#player').removeClass('open'); // Closing the player
-      $('#record').removeClass('spinning'); // vinyl stopped spinning
-      $(this).removeClass('ion-ios7-pause').addClass('ion-ios7-play'); // change pause btn to play btn
-          
-      audioPlayer.pause(); // Pause the player
-      status = !status; // invert status
-      }
+// navigation scroll
+$('nav a').click(function(event) {
+    var id = $(this).attr("href");
+    var offset = 0;
+    var target = $(id).offset().top - offset;
+    $('html, body').animate({
+        scrollTop: target
+    }, 500);
+    event.preventDefault();
+});
+/* Scroll-to-Top Button */
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 100) {
+        $('.scrollup').fadeIn();
+    } else {
+        $('.scrollup').fadeOut();
+    }
+});
 
-        
-      });
-  
-      });
+$('.scrollup').click(function () {
+    $("html, body").animate({
+        scrollTop: 0
+    }, 600);
+    return false;
+});
+/* WORK IN PROGRESS
+   NAVIGATION ACTIVE STATE IN SECTION AREA
+*/
+var sections = $('section'), nav = $('nav'), nav_height = nav.outerHeight();
+ 
+$(window).on('scroll', function () {
+  var cur_pos = $(this).scrollTop();
+ 
+  sections.each(function() {
+    var top = $(this).offset().top - nav_height,
+        bottom = top + $(this).outerHeight();
+ 
+    if (cur_pos >= top && cur_pos <= bottom) {
+      nav.find('a').removeClass('active');
+      sections.removeClass('active');
+ 
+      $(this).addClass('active');
+      nav.find('a[href="#'+$(this).attr('id')+'"]').addClass('active');
+    }
+  });
+});
