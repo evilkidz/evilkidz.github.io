@@ -684,7 +684,7 @@ nav ul a.active {
 
 #hero {
   position: relative;
-  background: url(../../assets/images/evilcover.jpg) no-repeat center center fixed;
+  background: url(../../assets/images/evilcover3.jpg) no-repeat center center fixed;
   background-size: cover;
   text-align: center;
   color: #fff;
@@ -856,6 +856,8 @@ nav ul a.active {
     text-decoration: none; }
 
 .loop_details {
+  padding: 0 2%;
+  line-height: 1em;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto; }
@@ -863,20 +865,22 @@ nav ul a.active {
     clear: both;
     content: "";
     display: table; }
-  .loop_details .left {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%; }
-    .loop_details .left:last-child {
-      margin-right: 0; }
-  .loop_details .right {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%; }
-    .loop_details .right:last-child {
-      margin-right: 0; }
+  @media screen and (min-width: 900px) {
+    .loop_details .left {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 48.82117%; }
+      .loop_details .left:last-child {
+        margin-right: 0; } }
+  @media screen and (min-width: 900px) {
+    .loop_details .right {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 48.82117%; }
+      .loop_details .right:last-child {
+        margin-right: 0; } }
 
 .product-details {
   padding: 3% 0 15% 0; }
@@ -891,7 +895,7 @@ nav ul a.active {
     width: 60%; }
 
 body {
-  background-color: #ddd;
+  background: url(../../assets/images/pattern.png) repeat;
   color: #999; }
 
 .row-wrapper {
@@ -911,4 +915,7 @@ body {
     display: table; }
 
 section {
-  padding: 5em 0 !important; }
+  padding: 2em 0; }
+  @media screen and (min-width: 900px) {
+    section {
+      padding: 5em 0 !important; } }
