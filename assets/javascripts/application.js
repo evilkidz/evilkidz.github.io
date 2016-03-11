@@ -70,3 +70,8 @@ $(window).on('scroll', function () {
     }
   });
 });
+
+
+$(function(){
+              $("#svgIncludes").load("https://s3-us-west-2.amazonaws.com/s.cdpn.io/40839/svgdefs-2_copy.svg"); 
+ });

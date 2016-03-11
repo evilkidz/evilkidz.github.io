@@ -894,6 +894,30 @@ nav ul a.active {
     font-size: 1em;
     width: 60%; }
 
+.copyright {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 31.76157%;
+  margin-left: 8.5298%; }
+  .copyright:last-child {
+    margin-right: 0; }
+
+.creditcards {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 31.76157%;
+  margin-left: 8.5298%; }
+  .creditcards:last-child {
+    margin-right: 0; }
+  .creditcards .icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1em;
+    width: 45px;
+    height: 30px; }
+
 body {
   background: url(../../assets/images/pattern.png) repeat;
   color: #999; }
